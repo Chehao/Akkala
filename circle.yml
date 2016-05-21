@@ -34,16 +34,16 @@ test:
     - chmod 755 post-test.sh
     - ./post-test.sh
     
-deployment:
-  production:
-    branch: production    
-    commands:
-      - chmod 755 deploy_prod.sh
-      - ./deploy_prod.sh
-  staging:
-    branch: master
-    commands:
-      - chmod 755 deploy_stag.sh
-      - ./deploy_stag.sh
+#deployment:
+#  production:
+#    branch: production    
+#    commands:
+#      - chmod 755 deploy_prod.sh
+#      - ./deploy_prod.sh
+#  staging:
+#    branch: master
+#    commands:
+#      - chmod 755 deploy_stag.sh
+#      - ./deploy_stag.sh
     
     
