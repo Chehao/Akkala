@@ -1,0 +1,48 @@
+machine:
+  timezone:
+    UTC
+  java:
+    version : oraclejdk8
+  python:
+    version: 2.7.10
+  environment:
+    GRADLE_HOME: "~/gradle-2.9"
+    PATH: "$GRADLE_HOME/bin:$PATH"
+    MYSQL_USER: "ubuntu"
+    MYSQL_PASSWORD: ""
+
+dependencies:
+  pre:
+    - wget -N https://services.gradle.org/distributions/gradle-2.9-bin.zip; unzip gradle-2.9-bin.zip -d ~ 
+    - sudo apt-add-repository -y 'deb
+      http://ppa.launchpad.net/ondrej/mysql-experimental/ubuntu precise
+      main'
+    - sudo apt-get update; sudo DEBIAN_FRONTEND=noninteractive apt-get
+      install -y mysql-server-5.6
+test:
+  pre:
+    - gradle -version
+
+  override:
+#    - gradle clean compileJava --console=plain --stacktrace
+#    - gradle findbugsMain --console=plain --stacktrace
+#    - gradle findbugsTest --console=plain --stacktrace
+    - cd quickstart ; gradle test --console=plain
+    
+  post:
+    - chmod 755 post-test.sh
+    - ./post-test.sh
+    
+deployment:
+  production:
+    branch: production    
+    commands:
+      - chmod 755 deploy_prod.sh
+      - ./deploy_prod.sh
+  staging:
+    branch: master
+    commands:
+      - chmod 755 deploy_stag.sh
+      - ./deploy_stag.sh
+    
+    
