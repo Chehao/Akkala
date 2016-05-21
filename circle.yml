@@ -13,12 +13,13 @@ machine:
 
 dependencies:
   pre:
-    - wget -N https://services.gradle.org/distributions/gradle-2.9-bin.zip; unzip gradle-2.9-bin.zip -d ~ 
+    - wget -N https://services.gradle.org/distributions/gradle-2.9-bin.zip; 
+      unzip gradle-2.9-bin.zip -d ~ 
     - sudo apt-add-repository -y 'deb
       http://ppa.launchpad.net/ondrej/mysql-experimental/ubuntu precise
       main'
-    - sudo apt-get update; sudo DEBIAN_FRONTEND=noninteractive apt-get
-      install -y mysql-server-5.6
+#    - sudo apt-get update; sudo DEBIAN_FRONTEND=noninteractive apt-get
+#      install -y mysql-server-5.6
 test:
   pre:
     - gradle -version

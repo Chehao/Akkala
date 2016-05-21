@@ -6,6 +6,7 @@ echo 'install AWS CLI'
 pip install botocore --upgrade
 pip install awscli --upgrade
 
+cd quickstart
 
 echo 'gradle build and package'
 gradle -version
@@ -13,7 +14,7 @@ gradle clean
 gradle build -Penv=stg -x test --console=plain --stacktrace  
 
 # rebuild to tar file for OpsWorks
-cd quickstart/build/libs
+cd build/libs
 VERSION=`git rev-parse --short HEAD`
 WAR_FILE=$(ls -rt *.war | tail -1)
 ZIP_FILE=${WAR_FILE}
