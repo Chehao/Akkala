@@ -29,7 +29,9 @@ dependencies {
 	compile "com.typesafe.akka:akka-actor_2.11:${akkaVersion}"
 	compile "com.typesafe.akka:akka-persistence_2.11:${akkaVersion}"
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-    compile group: 'org.scala-lang', name: 'scala-library', version: '2.11.8'
+    compile group: 'org.scala-lang', name: 'scala-library', version: '2.11.8'    
+	compile group: 'org.scala-lang', name: 'scala-reflect', version: '2.11.8'
+    
     // http://mvnrepository.com/artifact/org.iq80.leveldb/leveldb
 	compile group: 'org.iq80.leveldb', name: 'leveldb', version: '0.7'
     
