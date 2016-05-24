@@ -13,7 +13,7 @@ object HelloSlick extends App {
   try {
     
     val suppliers = TableQuery[Suppliers]
-    Await.result(db.run(DBIO.seq(
+    val setup = DBIO.seq(
       // create the schema
       suppliers.schema.create,
       suppliers += (101, "Acme, Inc.", "99 Market Street", "Groundsville", "CA", "95199"),
@@ -23,7 +23,8 @@ object HelloSlick extends App {
       // print the suppliers (select * from Suppliers)
       //suppliers.result.map(println)
       
-    )), Duration.Inf)
+    )
+    Await.result(db.run(setup), Duration.Inf)
 
     db.run(suppliers.result).map(_.foreach {
       case (id, name, street, city, state, zip) => println(id + "," + name)
